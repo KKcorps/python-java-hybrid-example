@@ -13,13 +13,6 @@ from distutils.command.build_ext import build_ext
 import glob
 from setuptools.command.install import install
 
-
-class Install(install):
-    def run(self):
-        install.run(self)
-        print("test.....")
-
-
 def remove_if_exists(file_path):
     if os.path.exists(file_path):
         if os.path.islink(file_path) or os.path.isfile(file_path):
@@ -56,33 +49,27 @@ try:
 
       copy("../dummy-java-module/target/dummy-java-module-1.0-SNAPSHOT.jar", os.path.join(JAR_PATH, "dummy-java-module-1.0-SNAPSHOT.jar"))
 
-      PACKAGES = ["java_integration_lib", "java_integration_lib.jars"]
-      PACKAGE_DIR = {"java_integration_lib.jars" : "jars"}
-      PACKAGE_DATA = {"java_integration_lib.jars" : ["*.jar"]}
+  PACKAGES = ["java_integration_lib", "java_integration_lib.jars"]
+  PACKAGE_DIR = {"java_integration_lib.jars" : "jars"}
+  PACKAGE_DATA = {"java_integration_lib.jars" : ["*.jar"]}
 
-      setup(
-              name='java-integration-lib',
-              version="1.0.0",
-              packages=PACKAGES,
-              include_package_data=True,
-              package_dir=PACKAGE_DIR,
-              package_data=PACKAGE_DATA,
-              cmdclass={
-                  'install': Install
-              },
-              scripts=[],
-              author='Kartik Khare',
-              author_email='kharekartik@gmail.com',
-              description='Apache Flink Python API',
-              python_requires='>=3.5',
-              install_requires=[],
-              zip_safe=False,
-              classifiers=[
-                  'Programming Language :: Python :: 3.8']
-          )
+  setup(
+          name='java-integration-lib',
+          version="1.0.0",
+          packages=PACKAGES,
+          include_package_data=True,
+          package_dir=PACKAGE_DIR,
+          package_data=PACKAGE_DATA,
+          author='Kartik Khare',
+          author_email='kharekartik@gmail.com',
+          description='Apache Flink Python API',
+          python_requires='>=3.5',
+          zip_safe=False,
+          classifiers=[
+              'Programming Language :: Python :: 3.8']
+      )
 finally:
     if in_source_dir:
-      #print(in_source_dir)
       remove_if_exists(JAR_PATH)
 
 
