@@ -1,0 +1,10 @@
+MANIFEST.in
+setup.py
+jars/dummy-java-module-1.0-SNAPSHOT.jar
+java_integration_lib/__init__.py
+java_integration_lib/dummy.py
+java_integration_lib.egg-info/PKG-INFO
+java_integration_lib.egg-info/SOURCES.txt
+java_integration_lib.egg-info/dependency_links.txt
+java_integration_lib.egg-info/not-zip-safe
+java_integration_lib.egg-info/top_level.txt

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>python-java-hybrid-package</artifactId>
+    <groupId>org.example</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>dummy-java-module</artifactId>
+
+  <properties>
+    <target.java.version>1.8</target.java.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>${target.java.version}</source>
+          <target>${target.java.version}</target>
+          <!-- The semantics of this option are reversed, see MCOMPILER-209. -->
+          <useIncrementalCompilation>false</useIncrementalCompilation>
+          <compilerArgs>
+            <!-- Prevents recompilation due to missing package-info.class, see MCOMPILER-205 -->
+            <arg>-Xpkginfo:always</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
