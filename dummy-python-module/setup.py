@@ -62,7 +62,7 @@ try:
           package_data=PACKAGE_DATA,
           author='Kartik Khare',
           author_email='kharekartik@gmail.com',
-          description='Apache Flink Python API',
+          description='Dummy hybrid python - java packaged code',
           python_requires='>=3.5',
           zip_safe=False,
           classifiers=[
